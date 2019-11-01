@@ -6,8 +6,13 @@ import { Component, OnInit } from '@angular/core';
                 inline template ...linea 1<br>
                 inline template ...linea 2<br>
                 inline template ...linea 3<br>
+      styleUrls -> styles [\`div (se aplica css) \`]
             </h1></div>`,
-  styleUrls: ['./mi-componente.component.css']
+  styles: [`
+  div {
+    color: orange;
+    }
+  `]
 })
 export class MiComponenteComponent implements OnInit {
 
