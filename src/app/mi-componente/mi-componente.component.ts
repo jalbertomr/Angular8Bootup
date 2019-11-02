@@ -1,20 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
-
 @Component({
   selector: '[app-mi-componente]',
-  template: `<div><h1> Interpolation<br>
-             - Valor tomado de atributo de clase = {{miValor}}<br>
-             - {{12.23 + 34}}<br>
-             - {{"Concatenando strings " + miValor}}<br>
-             - longitud de miValor: {{miValor.length}}<br>
-            - "miValor a UpperCase:  + {{miValor.toLocaleUpperCase()}}<br>
-            - llamando metodoA: {{metodoA()}}<br>
-            - Asignacion no es permitida: a = 2 + 2 <br>
-            - global js variables no son observadas: window.location.href: <br>
-            - pero si por variable de clase: {{siteUrl}}<br>
-            - ejemplo: public siteUrl = window.location.href;
-            </h1></div>`,
+  template: `<div><h1> Property binding</h1><br>
+      <table><tr><th>Attribute</th><th>Property</th></tr>
+          <tr><td>HTML.</td><td>DOM (Document Object Model).</td></tr>
+          <tr><td>Initialized.</td><td>Initialized by Attribute.</td></tr>
+          <tr><td>Not Change.</td><td>Can Change.</td></tr>
+      </table>
+             <input type="text" value="Bext">
+            </div>`,
   styles: []
 })
 export class MiComponenteComponent implements OnInit {
