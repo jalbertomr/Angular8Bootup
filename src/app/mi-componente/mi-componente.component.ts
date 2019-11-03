@@ -1,41 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-@Component({
-  selector: '[app-mi-componente]',
+@Component({selector: '[app-mi-componente]',
   template: `
-      <div><h1> class Binding</h1><br>
-          <h2 class="text-success">Aplicando class class="text-success"</h2>
-          <h2 [class]="miClassProperty">Aplicando class binding [class]="miClassProperty"</h2>
-          <h2 class="text-danger" [class]="miClassProperty">Aplicando class y [class], solo [class] aplica</h2>
-          <h2 [class.text-danger]="miBooleanProperty">Aplicando [class.text-danger]="miBooleanProperty"</h2>
-          <h2 [ngClass]="miPropertyVariasClasses">Aplicando [ngClass]="miPropertyVariasClasses"</h2></div>`,
-  styles: [`    .text-success {
-      color: green;
-  }
-
-  .text-danger {
-      color: red;
-  }
-
-  .text-special {
-      font-style: italic;
-  }  `]
+      <div><h1> style Binding</h1><br>
+          <h2 [style.color]="'orange'">Aplicando [style.color]="'orange'"</h2>
+          <h3>miBooleanProperty = {{miBooleanProperty}}</h3>
+          <h2 [style.color]="miBooleanProperty ? 'green' : 'red'">Aplicando [style.color]="miBooleanProperty ? 'green' :
+              'red'"</h2>
+          <h3>miColorProperty = {{miColorProperty}}</h3>
+          <h2 [style.color]="miColorProperty">Aplicando [style.color]="miColorProperty"</h2>
+          <h3>miPropertyVariosStyles = {{miPropertyVariosStyles.color}},{{miPropertyVariosStyles.fontStyle}}</h3>
+          <h2 [ngStyle]="miPropertyVariosStyles">Aplicando [ngStyle]="miPropertyVariosStyles"</h2>
+          <button (click)="Cambia()"><h2>Cambia property values -> styles</h2></button>
+      </div>`,
+  styles: []
 })
 export class MiComponenteComponent implements OnInit {
-  public miClassProperty = "text-special";
+  public miColorProperty = "blue";
   public miBooleanProperty = true;
-  public hasError = true;
-  public isSpecial = true;
-  public miPropertyVariasClasses = {
-    "text-success": !this.hasError,
-    "text-danger": this.hasError,
-    "text-special": this.isSpecial
-  }
+  public miPropertyVariosStyles = {color: this.miColorProperty, fontStyle: "italic"};
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  metodoA() {
+    return "valor regresado x metodoA.";
+  }
+
+  Cambia() {
+    this.miBooleanProperty = !this.miBooleanProperty;
+    if (this.miColorProperty == 'blue') this.miColorProperty = 'orange'; else this.miColorProperty = 'blue';
+    (this.miPropertyVariosStyles.fontStyle == 'italic') ? this.miPropertyVariosStyles.fontStyle = 'normal' : this.miPropertyVariosStyles.fontStyle = 'italic';
   }
 
   metodoA() {
