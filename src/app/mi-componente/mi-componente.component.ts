@@ -3,17 +3,24 @@ import {Component, OnInit} from '@angular/core';
 @Component({selector: '[app-mi-componente]',
   template: `
       <div><h1> *ngIf Directive</h1><br>
-          <textarea disabled><h2 *ngIf="miPropertyDisplayText">miPropertyDisplayText = "{{miPropertyDisplayText}}"</h2></textarea><br>
+          <h3>miPropertyDisplayText  = {{miPropertyDisplayText}}</h3>
+          <textarea disabled><h2 *ngIf="miPropertyDisplayText; else elseBlock">miPropertyDisplayText = "{{miPropertyDisplayText}}"</h2>
+          <ng-template #elseBlock>
+             <h2>block por else template</h2>
+          </ng-template>
+          </textarea><br>
           
-          <h2 *ngIf="miPropertyDisplayText">miPropertyDisplayText = "{{miPropertyDisplayText}}"</h2>
+          <h2 *ngIf="miPropertyDisplayText; else elseBlock">miPropertyDisplayText = "{{miPropertyDisplayText}}"</h2>
+          <ng-template #elseBlock>
+             <h2>ng-template #elseBlock</h2>
+          </ng-template>
+          
           <button (click)="cambio()">Alternar</button>
-
       </div>`,
   styles: []
 })
 
 export class MiComponenteComponent implements OnInit {
-  public miPropertyValue = "algo";
   public miPropertyDisplayText = true;
 
   constructor() {
