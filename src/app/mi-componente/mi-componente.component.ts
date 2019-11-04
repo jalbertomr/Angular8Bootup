@@ -3,11 +3,11 @@ import {Component, OnInit} from '@angular/core';
 @Component({selector: '[app-mi-componente]',
   template: `
       <div><h1> *ngFor Directive</h1><br>
-          <textarea disabled><div *ngFor="let color of arrColors;first as i">
+          <textarea disabled><div *ngFor="let color of arrColors;fisrt as i">
              <h2>{{color}}{{soloParaMostrar}}</h2>
           </div>
           </textarea><br>
-          <div *ngFor="let color of arrColors; index as i">
+          <div *ngFor="let color of arrColors; first as i">
              <h2>{{i}}: {{color}}</h2>
           </div>
       </div>`,
