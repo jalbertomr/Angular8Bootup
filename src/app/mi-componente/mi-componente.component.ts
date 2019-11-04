@@ -3,12 +3,12 @@ import {Component, OnInit} from '@angular/core';
 @Component({selector: '[app-mi-componente]',
   template: `
       <div><h1> *ngFor Directive</h1><br>
-          <textarea disabled><div *ngFor="let color of arrColors">
+          <textarea disabled><div *ngFor="let color of arrColors;first as i">
              <h2>{{color}}{{soloParaMostrar}}</h2>
           </div>
           </textarea><br>
-          <div *ngFor="let color of arrColors">
-             <h2>{{color}}</h2>
+          <div *ngFor="let color of arrColors; index as i">
+             <h2>{{i}}: {{color}}</h2>
           </div>
       </div>`,
   styles: []
@@ -16,7 +16,7 @@ import {Component, OnInit} from '@angular/core';
 
 export class MiComponenteComponent implements OnInit {
   public arrColors = ['rojo','azul','verde','amarillo','blanco'];
-  public soloParaMostrar = "{{color}}";
+  public soloParaMostrar = "{{i}}: {{color}}";
 
   constructor() {
   }
