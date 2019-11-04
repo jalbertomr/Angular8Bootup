@@ -4,13 +4,19 @@ import {Component, OnInit} from '@angular/core';
   template: `
       <div><h1> *ngIf Directive</h1><br>
           <h3>miPropertyDisplayText  = {{miPropertyDisplayText}}</h3>
-          <textarea disabled><h2 *ngIf="miPropertyDisplayText; else elseBlock">miPropertyDisplayText = "{{miPropertyDisplayText}}"</h2>
+          <textarea disabled><h2 *ngIf="miPropertyDisplayText; then thenBlock; else elseBlock">miPropertyDisplayText = "{{miPropertyDisplayText}}"</h2>
+          <ng-template #thenBlock>
+              <h2>ng-template #thenBlock</h2>
+          </ng-template>
           <ng-template #elseBlock>
-             <h2>block por else template</h2>
+             <h2>ng-template #elseBlock</h2>
           </ng-template>
           </textarea><br>
           
-          <h2 *ngIf="miPropertyDisplayText; else elseBlock">miPropertyDisplayText = "{{miPropertyDisplayText}}"</h2>
+          <h2 *ngIf="miPropertyDisplayText; then thenBlock; else elseBlock">miPropertyDisplayText = "{{miPropertyDisplayText}}"</h2>
+          <ng-template #thenBlock>
+              <h2>ng-template #thenBlock</h2>
+          </ng-template>
           <ng-template #elseBlock>
              <h2>ng-template #elseBlock</h2>
           </ng-template>
