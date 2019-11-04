@@ -2,40 +2,41 @@ import {Component, OnInit} from '@angular/core';
 
 @Component({selector: '[app-mi-componente]',
   template: `
-      <div><h1> *ngIf Directive</h1><br>
-          <h3>miPropertyDisplayText  = {{miPropertyDisplayText}}</h3>
-          <textarea disabled><h2 *ngIf="miPropertyDisplayText; then thenBlock; else elseBlock">miPropertyDisplayText = "{{miPropertyDisplayText}}"</h2>
-          <ng-template #thenBlock>
-              <h2>ng-template #thenBlock</h2>
-          </ng-template>
-          <ng-template #elseBlock>
-             <h2>ng-template #elseBlock</h2>
-          </ng-template>
+      <div><h1> *ngSwitch Directive</h1><br>
+          <textarea disabled><div [ngSwitch]="miPropertyCaseOptions">
+              <div *ngSwitchCase="'rojo'"><h3>ALERTA</h3></div>
+              <div *ngSwitchCase="'azul'"><h3>CIELO</h3></div>
+              <div *ngSwitchCase="'verde'"><h3>ARBOL</h3></div>
+              <div *ngSwitchDefault><h3>VALOR NO IDENTIFICADO</h3></div>
+          </div>
           </textarea><br>
-          
-          <h2 *ngIf="miPropertyDisplayText; then thenBlock; else elseBlock">miPropertyDisplayText = "{{miPropertyDisplayText}}"</h2>
-          <ng-template #thenBlock>
-              <h2>ng-template #thenBlock</h2>
-          </ng-template>
-          <ng-template #elseBlock>
-             <h2>ng-template #elseBlock</h2>
-          </ng-template>
-          
+          <h3>miPropertyCaseOptions  = {{miPropertyCaseOptions}}</h3>
+          <div [ngSwitch]="miPropertyCaseOptions">
+              <div *ngSwitchCase="'rojo'"><h3>ALERTA</h3></div>
+              <div *ngSwitchCase="'azul'"><h3>CIELO</h3></div>
+              <div *ngSwitchCase="'verde'"><h3>ARBOL</h3></div>
+              <div *ngSwitchDefault><h3>VALOR NO IDENTIFICADO</h3></div>
+          </div>
           <button (click)="cambio()">Alternar</button>
       </div>`,
   styles: []
 })
 
 export class MiComponenteComponent implements OnInit {
-  public miPropertyDisplayText = true;
+  public miPropertyCaseOptions = "rojo";
 
   constructor() {
   }
 
   cambio() {
     console.log("IN cambio()");
-    this.miPropertyDisplayText == true ? this.miPropertyDisplayText = false : this.miPropertyDisplayText = true;
-    console.log("this.miPropertyDisplayText: " + this.miPropertyDisplayText);
+    var arrColors = ['rojo','azul','verde','amarillo','blanco'];
+    console.log(Math.trunc((Math.random()*arrColors.length)));
+
+    this.miPropertyCaseOptions = arrColors[Math.trunc((Math.random()*arrColors.length))];
+    //  this.miPropertyCaseOptions = false :
+    //  this.miPropertyCaseOptions = true;
+    console.log("this.miPropertyCaseOptions: " + this.miPropertyCaseOptions);
   }
 
   ngOnInit() {
